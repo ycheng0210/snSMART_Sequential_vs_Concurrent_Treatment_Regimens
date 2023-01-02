@@ -1,0 +1,26 @@
+model{
+  for (i in 1:n){   # n is total sample size
+  # likelihood
+    Y1[i]~dbern(pi_1[i])
+    Y2[i]~dbern(pi_2[i])
+  # explaining
+    pi_1[i] <- pi[treatment_stageI[i]]
+    pi_2[i] <- pi[treatment_stageII[i]] * beta[response_stageI_id[i]] * delta[id_type[i]]
+  }
+  
+  for (j in 1:num_arms){
+    pi[j]~dunif(pi_prior.a[j],pi_prior.b[j])
+  }
+  
+  beta[1]~dunif(beta0_prior.a,beta0_prior.b)
+  beta[2]~dunif(beta1_prior.a,beta1_prior.c)
+  beta[3]~dunif(beta0_prior.a,beta0_prior.b)
+  beta[4]~dunif(beta1_prior.a,beta1_prior.c)
+  beta[5]~dunif(beta0_prior.a,beta0_prior.b)
+  beta[6]~dunif(beta1_prior.a,beta1_prior.c)
+  
+  for (k in 1:num_combo){
+  delta[k]~dunif(delta_1_prior.a[k],delta_1_prior.b[k])
+  }
+
+}
