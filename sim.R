@@ -91,6 +91,16 @@ deltas_seq = list(
 delta_1 = 1
 
 # deltas for concurrent DTRs are differed by cases
+# baseline scenario: no diff b/t con vs seq
+# deltas_con = list(
+#   "AB" = 1,
+#   "AC" = 1,
+#   "BA" = 1,
+#   "BC" = 1,
+#   "CA" = 1,
+#   "CB" = 1
+# )
+
 # Marginal scenario
 deltas_con = list(
   "AB" = (pi_1A * betas$AA)/(pi_1B * betas$AB),
